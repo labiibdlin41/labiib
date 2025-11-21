@@ -16,17 +16,16 @@
     overflow-x: hidden;
   }
 
-  /* Container Utama biar konten di tengah */
   .main-container {
-    max-width: 900px;
+    max-width: 950px;
     margin: 0 auto;
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
-    gap: 60px; /* Jarak antar section */
+    gap: 80px; /* Jarak antar section lebih lega */
   }
 
-  /* === SECTION 1: KARTU PROFIL === */
+  /* === SECTION 1: PROFIL === */
   .profile-card-custom {
     width: 100%;
     background: #ffffff;
@@ -38,15 +37,9 @@
     display: flex;
     align-items: flex-start;
     gap: 50px; 
-    
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .profile-card-custom.is-visible {
-    opacity: 1;
-    transform: translateY(0);
   }
 
   .profile-pic-custom {
@@ -59,11 +52,8 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   }
 
-  .profile-text-custom {
-    flex: 1;
-    text-align: left;
-  }
-
+  .profile-text-custom { flex: 1; text-align: left; }
+  
   .profile-text-custom h2 {
     margin: 0 0 5px 0;
     font-size: 2.4rem;
@@ -84,233 +74,140 @@
     border-bottom: 2px solid #EEF4D4;
   }
 
-  /* Highlights & Skills */
-  .highlights {
-    display: flex;
-    gap: 12px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-  }
+  .highlights { display: flex; gap: 12px; margin-top: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+  .highlight-badge { display: inline-flex; align-items: center; gap: 6px; background: #FFF8E1; color: #F57F17; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; border: 1px solid #FFE0B2; }
+  .highlight-badge.toefl { background: #E3F2FD; color: #1565C0; border-color: #BBDEFB; }
 
-  .highlight-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #FFF8E1;
-    color: #F57F17;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border: 1px solid #FFE0B2;
-  }
+  .skill-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 30px; }
+  .tag { background: #F1F8E9; color: #557C55; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; border: 1px solid #DCEDC8; }
 
-  .highlight-badge.toefl {
-    background: #E3F2FD;
-    color: #1565C0;
-    border-color: #BBDEFB;
-  }
+  #profile-bio p { font-size: 1rem; line-height: 1.7; color: #555; margin-bottom: 15px; }
 
-  .skill-tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-  }
-  
-  .tag {
-    background: #F1F8E9;
-    color: #557C55;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    border: 1px solid #DCEDC8;
-  }
+  .action-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+  .btn { text-decoration: none; padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primary { background-color: #557C55; color: white; box-shadow: 0 4px 15px rgba(85, 124, 85, 0.3); }
+  .btn-primary:hover { background-color: #3E5E3E; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(85, 124, 85, 0.4); }
+  .btn-secondary { background-color: white; color: #557C55; border: 2px solid #557C55; }
+  .btn-secondary:hover { background-color: #F1F8E9; transform: translateY(-2px); }
 
-  #profile-bio p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #555;
-    margin-bottom: 15px;
-  }
+  .social-links { margin-top: 25px; display: flex; gap: 20px; align-items: center; }
+  .social-icon { width: 24px; height: 24px; fill: #888; transition: all 0.3s ease; }
+  .social-icon:hover { fill: #557C55; transform: scale(1.1); }
 
-  /* Buttons & Social */
-  .action-buttons {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    text-decoration: none;
-    padding: 12px 28px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .btn-primary {
-    background-color: #557C55;
-    color: white;
-    box-shadow: 0 4px 15px rgba(85, 124, 85, 0.3);
-  }
-  .btn-primary:hover {
-    background-color: #3E5E3E;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(85, 124, 85, 0.4);
-  }
-
-  .btn-secondary {
-    background-color: white;
-    color: #557C55;
-    border: 2px solid #557C55;
-  }
-  .btn-secondary:hover {
-    background-color: #F1F8E9;
-    transform: translateY(-2px);
-  }
-
-  .social-links {
-    margin-top: 25px;
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-  .social-icon {
-    width: 24px;
-    height: 24px;
-    fill: #888;
-    transition: all 0.3s ease;
-  }
-  .social-icon:hover {
-    fill: #557C55;
-    transform: scale(1.1);
-  }
-
-  /* === SECTION 2: SERVICES (WHAT I DO) === */
+  /* === TITLES === */
   .section-title {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #2C3E50;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-weight: 700;
-    opacity: 0; /* Hidden initially */
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .section-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #C5E1A5;
+    margin: 10px auto 0;
+    border-radius: 2px;
   }
 
-  .services-grid {
+  /* === SECTION 2: SERVICES === */
+  .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .service-card { background: white; padding: 30px; border-radius: 20px; border: 1px solid #E8F5E9; box-shadow: 0 10px 25px rgba(85, 124, 85, 0.08); transition: transform 0.3s ease; opacity: 0; transform: translateY(30px); }
+  .service-card:hover { transform: translateY(-5px); border-color: #C8E6C9; }
+  .service-icon { width: 50px; height: 50px; background: #F1F8E9; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: #557C55; }
+  .service-card h3 { margin: 0 0 15px 0; color: #2C3E50; font-size: 1.2rem; }
+  .service-list { list-style: none; padding: 0; margin: 0; }
+  .service-list li { margin-bottom: 10px; padding-left: 25px; position: relative; color: #555; font-size: 0.95rem; line-height: 1.5; }
+  .service-list li::before { content: "✓"; position: absolute; left: 0; color: #557C55; font-weight: bold; }
+
+  /* === SECTION 3: GALLERY (NEW) === */
+  .gallery-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 Kolom */
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
   }
 
-  .service-card {
+  .gallery-item {
     background: white;
-    padding: 30px;
-    border-radius: 20px;
+    border-radius: 16px;
+    overflow: hidden;
     border: 1px solid #E8F5E9;
-    box-shadow: 0 10px 25px rgba(85, 124, 85, 0.08);
-    transition: transform 0.3s ease;
-    
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(30px);
   }
-  
-  .service-card:hover {
+
+  .gallery-item:hover {
     transform: translateY(-5px);
-    border-color: #C8E6C9;
+    box-shadow: 0 12px 30px rgba(85, 124, 85, 0.15);
   }
 
-  .service-icon {
-    width: 50px;
-    height: 50px;
-    background: #F1F8E9;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
+  .gallery-img-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #eee;
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .gallery-item:hover .gallery-img {
+    transform: scale(1.05);
+  }
+
+  .gallery-content {
+    padding: 20px;
+  }
+
+  .gallery-category {
+    font-size: 0.75rem;
     color: #557C55;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
   }
 
-  .service-card h3 {
-    margin: 0 0 15px 0;
+  .gallery-title {
+    font-size: 1.1rem;
+    font-weight: 600;
     color: #2C3E50;
-    font-size: 1.2rem;
+    margin: 0 0 10px 0;
   }
 
-  .service-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .service-list li {
-    margin-bottom: 10px;
-    padding-left: 25px;
-    position: relative;
-    color: #555;
-    font-size: 0.95rem;
+  .gallery-desc {
+    font-size: 0.9rem;
+    color: #666;
     line-height: 1.5;
   }
 
-  .service-list li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #557C55;
-    font-weight: bold;
-  }
+  /* Scroll Indicator */
+  .scroll-indicator { text-align: center; margin-top: -40px; color: #557C55; animation: bounce 2s infinite; opacity: 0; font-weight: 500; font-size: 0.9rem; }
+  @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-  /* Footer Sederhana */
-  footer {
-    text-align: center;
-    margin-top: 60px;
-    color: #888;
-    font-size: 0.85rem;
-  }
-
-  /* Scroll Down Animation */
-  .scroll-indicator {
-    text-align: center;
-    margin-top: -30px;
-    margin-bottom: 30px;
-    color: #557C55;
-    animation: bounce 2s infinite;
-    opacity: 0;
-  }
-
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-    40% {transform: translateY(-10px);}
-    60% {transform: translateY(-5px);}
-  }
+  footer { text-align: center; margin-top: 40px; color: #888; font-size: 0.85rem; }
 
   /* === MOBILE RESPONSIVE === */
   @media (max-width: 768px) {
-    .profile-card-custom {
-      flex-direction: column;
-      text-align: center;
-      padding: 40px 25px;
-      gap: 30px;
-      align-items: center;
-    }
-    .profile-pic-custom {
-      width: 160px;
-      height: 160px;
-    }
+    .profile-card-custom { flex-direction: column; text-align: center; padding: 40px 25px; gap: 30px; align-items: center; }
+    .profile-pic-custom { width: 160px; height: 160px; }
     .profile-text-custom { text-align: center; }
     .highlights, .skill-tags, .action-buttons, .social-links { justify-content: center; }
-    
-    /* Services jadi 1 kolom di HP */
-    .services-grid {
-      grid-template-columns: 1fr; 
-    }
+    .services-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; } /* Gallery jadi 1 kolom di HP */
   }
 </style>
 </head>
@@ -349,45 +246,91 @@
     
     <!-- Animasi Scroll -->
     <div class="scroll-indicator" id="scroll-arrow">
-      ↓ What I Can Do ↓
+      ↓ Scroll for More ↓
     </div>
 
     <!-- SECTION 2: SERVICES -->
-    <h3 class="section-title" id="services-title">Expertise & Services</h3>
-    <div class="services-grid">
-      
-      <!-- CARD 1: ADMIN & EDUCATION -->
-      <div class="service-card" id="service-1">
-        <div class="service-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+    <div>
+      <h3 class="section-title" id="services-title">Expertise & Services</h3>
+      <div class="services-grid">
+        <!-- CARD 1 -->
+        <div class="service-card" id="service-1">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <h3>Education & Administration</h3>
+          <ul class="service-list">
+            <li>Manajemen Administrasi Kelas & Akademik</li>
+            <li>Pengelolaan Data via Google Workspace</li>
+            <li>Perancangan Modul & Bahan Ajar</li>
+            <li>Manajemen Organisasi & Event Pendidikan</li>
+          </ul>
         </div>
-        <h3>Education & Administration</h3>
-        <ul class="service-list">
-          <li>Manajemen Administrasi Kelas & Akademik</li>
-          <li>Pengelolaan Data via Google Workspace</li>
-          <li>Perancangan Modul & Bahan Ajar</li>
-          <li>Manajemen Organisasi & Event Pendidikan</li>
-        </ul>
+        <!-- CARD 2 -->
+        <div class="service-card" id="service-2">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+          </div>
+          <h3>Creative & Visual Media</h3>
+          <ul class="service-list">
+            <li>Video Editing (Final Cut Pro & Apple Motion)</li>
+            <li>Pengembangan Media Pembelajaran Visual</li>
+            <li>Desain Presentasi Interaktif</li>
+            <li>Dokumentasi & Publikasi Kegiatan</li>
+          </ul>
+        </div>
       </div>
+    </div>
 
-      <!-- CARD 2: CREATIVE & VISUAL -->
-      <div class="service-card" id="service-2">
-        <div class="service-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+    <!-- SECTION 3: GALLERY / PROJECTS (BARU) -->
+    <div>
+      <h3 class="section-title" id="gallery-title">Featured Projects</h3>
+      <div class="gallery-grid" id="gallery-grid">
+        
+        <!-- ITEM 1: ORGANISASI -->
+        <div class="gallery-item">
+          <div class="gallery-img-wrapper">
+             <!-- Ganti src dengan foto HIMA kamu nanti -->
+             <img src="https://placehold.co/600x400/E8F5E9/557C55?text=HIMA+Biology" class="gallery-img" alt="HIMA Biology">
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-category">Leadership</div>
+            <h4 class="gallery-title">Ketua HIMA Biologi 2023</h4>
+            <p class="gallery-desc">Memimpin organisasi tingkat departemen, mengelola event tahunan, dan meraih penghargaan himpunan teraktif.</p>
+          </div>
         </div>
-        <h3>Creative & Visual Media</h3>
-        <ul class="service-list">
-          <li>Video Editing (Final Cut Pro & Apple Motion)</li>
-          <li>Pengembangan Media Pembelajaran Visual</li>
-          <li>Desain Presentasi Interaktif</li>
-          <li>Dokumentasi & Publikasi Kegiatan</li>
-        </ul>
+
+        <!-- ITEM 2: CREATIVE -->
+        <div class="gallery-item">
+          <div class="gallery-img-wrapper">
+             <!-- Ganti src dengan screenshot video Apple Motion kamu -->
+             <img src="https://placehold.co/600x400/FFF3E0/F57F17?text=Apple+Motion" class="gallery-img" alt="Motion Graphics">
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-category">Visual Media</div>
+            <h4 class="gallery-title">Media Pembelajaran Interaktif</h4>
+            <p class="gallery-desc">Pengembangan konten visual berbasis Apple Motion dan FCP untuk memvisualisasikan konsep biologi kompleks.</p>
+          </div>
+        </div>
+
+        <!-- ITEM 3: WORK EXPERIENCE -->
+        <div class="gallery-item">
+          <div class="gallery-img-wrapper">
+             <!-- Ganti src dengan foto kegiatan LPP Agro -->
+             <img src="https://placehold.co/600x400/E3F2FD/1565C0?text=LPP+Agro" class="gallery-img" alt="Admin Kelas">
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-category">Administration</div>
+            <h4 class="gallery-title">Asisten Pengelola Kelas</h4>
+            <p class="gallery-desc">Manajemen data peserta dan administrasi akademik menggunakan Google Workspace untuk proyek BPDP.</p>
+          </div>
+        </div>
+
       </div>
-      
     </div>
 
     <footer>
-      &copy; 2025 Labiib Defyanda. Built with AI Assistance.
+      &copy; 2025 Labiib Defyanda.
     </footer>
 
   </div>
@@ -397,19 +340,14 @@
       const CONFIG = {
         name: "Labiib Defyanda",
         subtitle: "Education Management | Administrative Support | Biology Graduate", 
-        
         email: "labiib39@gmail.com",
         linkedin: "https://www.linkedin.com/in/labiib-defyanda", 
         instagram: "https://instagram.com/labiibdlin41", 
         cvLink: "CV Indo.pdf",
-        
         imageUrl: "https://lh3.googleusercontent.com/pw/AP1GczOexhgpWTr35eHagJ29Ef9X-LCGadrJnKl_njuHuu36pGF9apJYHEUunM_ZLPlED1mSF3hlESvkuOuHO9q_ihEh_pFVs7_65BhSoz1JKurpNwPAr3aEh2tIXm8hJvYUGK2j7hJN_BsLeJzAXyHqnM7Q=w1024-h576-s-no-gm?authuser=0",
-        
         yudisium: "S.Pd. Candidate (Nov 2025)",
         toefl: "TOEFL ITP: 547",
-
         skills: ["Project Management", "Class Administration", "Google Workspace", "Apple Motion", "Final Cut Pro"],
-
         bio: [
           "Lulusan Pendidikan Biologi (S.Pd) Universitas Negeri Yogyakarta (Nov 2025). Berpengalaman dalam **pengelolaan administrasi akademik** dan **manajemen organisasi**, didukung kemampuan komunikasi bahasa Inggris tingkat lanjut (TOEFL 547).",
           "Memiliki latar belakang kepemimpinan sebagai **Ketua HIMA** dan keahlian teknis dalam manajemen data (Google Workspace) serta pembuatan konten visual (Apple Motion/FCP)."
@@ -417,7 +355,6 @@
       };
 
       try {
-        // ... (Logic Pengisian Data yang sama) ...
         document.getElementById('profile-name').textContent = CONFIG.name;
         document.getElementById('profile-subtitle').textContent = CONFIG.subtitle;
         document.getElementById('profile-image').src = CONFIG.imageUrl;
@@ -452,7 +389,7 @@
 
       } catch (e) { console.error(e); }
       
-      // Animasi Bertahap (Staggered Animation)
+      // Animasi
       const animate = (id, delay) => {
         const el = document.getElementById(id);
         if(el) setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, delay);
@@ -463,6 +400,16 @@
       animate('services-title', 600);
       animate('service-1', 800);
       animate('service-2', 1000);
+      animate('gallery-title', 1200);
+      
+      // Animasi Gallery Items
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      galleryItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        }, 1400 + (index * 200));
+      });
     });
   </script>
 </body>
