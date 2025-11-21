@@ -12,18 +12,22 @@
     font-family: 'Poppins', sans-serif;
     margin: 0;
     background-color: #F7F9F0; /* Ghibli Cream */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
     color: #333;
+    overflow-x: hidden;
   }
 
-  /* === KARTU PROFIL === */
-  .profile-card-custom {
+  /* Container Utama biar konten di tengah */
+  .main-container {
     max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* Jarak antar section */
+  }
+
+  /* === SECTION 1: KARTU PROFIL === */
+  .profile-card-custom {
     width: 100%;
     background: #ffffff;
     border: 1px solid #E8F5E9; 
@@ -45,7 +49,6 @@
     transform: translateY(0);
   }
 
-  /* === FOTO === */
   .profile-pic-custom {
     width: 220px;
     height: 220px;
@@ -56,7 +59,6 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   }
 
-  /* === KOLOM TEKS === */
   .profile-text-custom {
     flex: 1;
     text-align: left;
@@ -74,18 +76,20 @@
     font-size: 0.9rem;
     font-weight: 600;
     color: #557C55; 
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
     display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #EEF4D4;
   }
 
-  /* === HIGHLIGHTS ROW (BARU) === */
-  /* Tempat naruh Status Yudisium & TOEFL */
+  /* Highlights & Skills */
   .highlights {
     display: flex;
     gap: 12px;
-    margin-bottom: 25px;
+    margin-top: 10px;
+    margin-bottom: 15px;
     flex-wrap: wrap;
   }
 
@@ -93,8 +97,8 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: #FFF8E1; /* Kuning pucat */
-    color: #F57F17; /* Oranye tua */
+    background: #FFF8E1;
+    color: #F57F17;
     padding: 6px 12px;
     border-radius: 8px;
     font-size: 0.85rem;
@@ -103,17 +107,16 @@
   }
 
   .highlight-badge.toefl {
-    background: #E3F2FD; /* Biru pucat */
-    color: #1565C0; /* Biru tua */
+    background: #E3F2FD;
+    color: #1565C0;
     border-color: #BBDEFB;
   }
 
-  /* === SKILL TAGS === */
   .skill-tags {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
   
   .tag {
@@ -133,9 +136,8 @@
     margin-bottom: 15px;
   }
 
-  /* === TOMBOL ACTION === */
+  /* Buttons & Social */
   .action-buttons {
-    margin-top: 10px;
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
@@ -174,14 +176,12 @@
     transform: translateY(-2px);
   }
 
-  /* SOSMED */
   .social-links {
     margin-top: 25px;
     display: flex;
     gap: 20px;
     align-items: center;
   }
-  
   .social-icon {
     width: 24px;
     height: 24px;
@@ -193,6 +193,104 @@
     transform: scale(1.1);
   }
 
+  /* === SECTION 2: SERVICES (WHAT I DO) === */
+  .section-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #2C3E50;
+    margin-bottom: 30px;
+    font-weight: 700;
+    opacity: 0; /* Hidden initially */
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 Kolom */
+    gap: 30px;
+  }
+
+  .service-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #E8F5E9;
+    box-shadow: 0 10px 25px rgba(85, 124, 85, 0.08);
+    transition: transform 0.3s ease;
+    
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    border-color: #C8E6C9;
+  }
+
+  .service-icon {
+    width: 50px;
+    height: 50px;
+    background: #F1F8E9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #557C55;
+  }
+
+  .service-card h3 {
+    margin: 0 0 15px 0;
+    color: #2C3E50;
+    font-size: 1.2rem;
+  }
+
+  .service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .service-list li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .service-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #557C55;
+    font-weight: bold;
+  }
+
+  /* Footer Sederhana */
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #888;
+    font-size: 0.85rem;
+  }
+
+  /* Scroll Down Animation */
+  .scroll-indicator {
+    text-align: center;
+    margin-top: -30px;
+    margin-bottom: 30px;
+    color: #557C55;
+    animation: bounce 2s infinite;
+    opacity: 0;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+  }
+
   /* === MOBILE RESPONSIVE === */
   @media (max-width: 768px) {
     .profile-card-custom {
@@ -202,68 +300,96 @@
       gap: 30px;
       align-items: center;
     }
-
     .profile-pic-custom {
       width: 160px;
       height: 160px;
     }
-
-    .profile-text-custom {
-      text-align: center;
-    }
-
-    .profile-text-custom h2 {
-      font-size: 1.8rem;
-    }
+    .profile-text-custom { text-align: center; }
+    .highlights, .skill-tags, .action-buttons, .social-links { justify-content: center; }
     
-    .highlights, .skill-tags {
-      justify-content: center;
-    }
-    
-    .action-buttons {
-      justify-content: center;
-    }
-    
-    .social-links {
-      justify-content: center;
+    /* Services jadi 1 kolom di HP */
+    .services-grid {
+      grid-template-columns: 1fr; 
     }
   }
 </style>
 </head>
 <body>
 
-  <div class="profile-card-custom" id="myProfileCard">
-    <img src="" alt="Foto Profil" class="profile-pic-custom" id="profile-image">
+  <div class="main-container">
     
-    <div class="profile-text-custom">
-      <h2 id="profile-name">Loading...</h2> 
-      <div class="subtitle" id="profile-subtitle">Loading...</div> 
+    <!-- SECTION 1: PROFIL -->
+    <div class="profile-card-custom" id="myProfileCard">
+      <img src="" alt="Foto Profil" class="profile-pic-custom" id="profile-image">
       
-      <!-- HIGHLIGHTS (BARU: TOEFL & YUDISIUM) -->
-      <div class="highlights" id="highlights-container">
-        <!-- Diisi JS -->
+      <div class="profile-text-custom">
+        <h2 id="profile-name">Loading...</h2> 
+        <div class="subtitle" id="profile-subtitle">Loading...</div> 
+        
+        <div id="profile-bio"></div> 
+
+        <div class="highlights" id="highlights-container"></div>
+        <div class="skill-tags" id="skill-container"></div>
+
+        <div class="action-buttons">
+          <a href="#" class="btn btn-primary" id="btn-cv">Download CV</a>
+          <a href="#" class="btn btn-secondary" id="btn-email">Email Saya</a>
+        </div>
+
+        <div class="social-links">
+          <a href="#" target="_blank" id="link-linkedin">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="#" target="_blank" id="link-instagram">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
       </div>
-
-      <!-- SKILL TAGS -->
-      <div class="skill-tags" id="skill-container"></div>
-
-      <div id="profile-bio"></div> 
-
-      <div class="action-buttons">
-        <a href="#" class="btn btn-primary" id="btn-cv">Download CV</a>
-        <a href="#" class="btn btn-secondary" id="btn-email">Email Saya</a>
-      </div>
-
-      <div class="social-links">
-        <a href="#" target="_blank" id="link-linkedin">
-          <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-        </a>
-        <a href="#" target="_blank" id="link-instagram">
-          <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-      </div>
-
     </div>
+    
+    <!-- Animasi Scroll -->
+    <div class="scroll-indicator" id="scroll-arrow">
+      ↓ What I Can Do ↓
+    </div>
+
+    <!-- SECTION 2: SERVICES -->
+    <h3 class="section-title" id="services-title">Expertise & Services</h3>
+    <div class="services-grid">
+      
+      <!-- CARD 1: ADMIN & EDUCATION -->
+      <div class="service-card" id="service-1">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+        </div>
+        <h3>Education & Administration</h3>
+        <ul class="service-list">
+          <li>Manajemen Administrasi Kelas & Akademik</li>
+          <li>Pengelolaan Data via Google Workspace</li>
+          <li>Perancangan Modul & Bahan Ajar</li>
+          <li>Manajemen Organisasi & Event Pendidikan</li>
+        </ul>
+      </div>
+
+      <!-- CARD 2: CREATIVE & VISUAL -->
+      <div class="service-card" id="service-2">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+        </div>
+        <h3>Creative & Visual Media</h3>
+        <ul class="service-list">
+          <li>Video Editing (Final Cut Pro & Apple Motion)</li>
+          <li>Pengembangan Media Pembelajaran Visual</li>
+          <li>Desain Presentasi Interaktif</li>
+          <li>Dokumentasi & Publikasi Kegiatan</li>
+        </ul>
+      </div>
+      
+    </div>
+
+    <footer>
+      &copy; 2025 Labiib Defyanda. Built with AI Assistance.
+    </footer>
+
   </div>
 
   <script>
@@ -279,11 +405,9 @@
         
         imageUrl: "https://lh3.googleusercontent.com/pw/AP1GczOexhgpWTr35eHagJ29Ef9X-LCGadrJnKl_njuHuu36pGF9apJYHEUunM_ZLPlED1mSF3hlESvkuOuHO9q_ihEh_pFVs7_65BhSoz1JKurpNwPAr3aEh2tIXm8hJvYUGK2j7hJN_BsLeJzAXyHqnM7Q=w1024-h576-s-no-gm?authuser=0",
         
-        // STATUS & TOEFL
         yudisium: "S.Pd. Candidate (Nov 2025)",
         toefl: "TOEFL ITP: 547",
 
-        // UPDATE SKILL BARU
         skills: ["Project Management", "Class Administration", "Google Workspace", "Apple Motion", "Final Cut Pro"],
 
         bio: [
@@ -293,6 +417,7 @@
       };
 
       try {
+        // ... (Logic Pengisian Data yang sama) ...
         document.getElementById('profile-name').textContent = CONFIG.name;
         document.getElementById('profile-subtitle').textContent = CONFIG.subtitle;
         document.getElementById('profile-image').src = CONFIG.imageUrl;
@@ -302,14 +427,12 @@
         document.getElementById('link-linkedin').href = CONFIG.linkedin;
         document.getElementById('link-instagram').href = CONFIG.instagram;
 
-        // RENDER HIGHLIGHTS (Yudisium & TOEFL)
         const hlContainer = document.getElementById('highlights-container');
         hlContainer.innerHTML = `
           <div class="highlight-badge">🎓 ${CONFIG.yudisium}</div>
           <div class="highlight-badge toefl">🇺🇸 ${CONFIG.toefl}</div>
         `;
         
-        // RENDER BIO
         const bio = document.getElementById('profile-bio');
         bio.innerHTML = '';
         CONFIG.bio.forEach(t => { 
@@ -318,7 +441,6 @@
           bio.appendChild(p); 
         });
 
-        // RENDER SKILLS
         const skillContainer = document.getElementById('skill-container');
         skillContainer.innerHTML = '';
         CONFIG.skills.forEach(s => {
@@ -330,10 +452,17 @@
 
       } catch (e) { console.error(e); }
       
-      const card = document.getElementById('myProfileCard');
-      if (card) {
-        setTimeout(() => card.classList.add('is-visible'), 100);
-      }
+      // Animasi Bertahap (Staggered Animation)
+      const animate = (id, delay) => {
+        const el = document.getElementById(id);
+        if(el) setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, delay);
+      };
+
+      animate('myProfileCard', 100);
+      animate('scroll-arrow', 1000);
+      animate('services-title', 600);
+      animate('service-1', 800);
+      animate('service-2', 1000);
     });
   </script>
 </body>
