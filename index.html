@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portofolio Labiib | Biology Educator</title>
-  
-  <!-- Import Font Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Portofolio Labiib | Education Professional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   /* === BASE STYLES === */
@@ -20,11 +18,12 @@
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
+    color: #333;
   }
 
   /* === KARTU PROFIL === */
   .profile-card-custom {
-    max-width: 850px;
+    max-width: 900px;
     width: 100%;
     background: #ffffff;
     border: 1px solid #E8F5E9; 
@@ -33,10 +32,9 @@
     padding: 50px;
     box-sizing: border-box;
     display: flex;
-    align-items: center; 
+    align-items: flex-start;
     gap: 50px; 
     
-    /* Animasi Awal */
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
@@ -49,8 +47,8 @@
 
   /* === FOTO === */
   .profile-pic-custom {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
@@ -58,51 +56,131 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   }
 
-  /* === TEKS === */
+  /* === KOLOM TEKS === */
   .profile-text-custom {
     flex: 1;
     text-align: left;
   }
 
   .profile-text-custom h2 {
-    margin: 0 0 8px 0;
-    font-size: 2.2rem;
+    margin: 0 0 5px 0;
+    font-size: 2.4rem;
     font-weight: 700;
     color: #2C3E50;
+    line-height: 1.2;
   }
 
+  /* SUBTITLE BARU: LEBIH LUAS & ADMINISTRATIF */
   .profile-text-custom .subtitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: #557C55; 
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     display: inline-block;
     padding-bottom: 5px;
     border-bottom: 2px solid #EEF4D4;
   }
 
   #profile-bio p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: #555555;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
     margin-bottom: 15px;
   }
 
-  /* === MOBILE === */
+  /* === SKILL TAGS (BARU - DARI CV) === */
+  .skill-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+  }
+  
+  .tag {
+    background: #F1F8E9;
+    color: #557C55;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid #DCEDC8;
+  }
+
+  /* === TOMBOL ACTION === */
+  .action-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary {
+    background-color: #557C55;
+    color: white;
+    box-shadow: 0 4px 15px rgba(85, 124, 85, 0.3);
+  }
+  .btn-primary:hover {
+    background-color: #3E5E3E;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(85, 124, 85, 0.4);
+  }
+
+  .btn-secondary {
+    background-color: white;
+    color: #557C55;
+    border: 2px solid #557C55;
+  }
+  .btn-secondary:hover {
+    background-color: #F1F8E9;
+    transform: translateY(-2px);
+  }
+
+  /* SOSMED */
+  .social-links {
+    margin-top: 25px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .social-icon {
+    width: 24px;
+    height: 24px;
+    fill: #888;
+    transition: all 0.3s ease;
+  }
+  .social-icon:hover {
+    fill: #557C55;
+    transform: scale(1.1);
+  }
+
+  /* === MOBILE RESPONSIVE === */
   @media (max-width: 768px) {
     .profile-card-custom {
       flex-direction: column;
       text-align: center;
       padding: 40px 25px;
-      gap: 25px;
+      gap: 30px;
+      align-items: center;
     }
 
     .profile-pic-custom {
-      width: 150px;
-      height: 150px;
-      margin: 0 auto;
+      width: 160px;
+      height: 160px;
     }
 
     .profile-text-custom {
@@ -112,60 +190,120 @@
     .profile-text-custom h2 {
       font-size: 1.8rem;
     }
+    
+    .skill-tags {
+      justify-content: center;
+    }
+    
+    .action-buttons {
+      justify-content: center;
+    }
+    
+    .social-links {
+      justify-content: center;
+    }
   }
 </style>
 </head>
 <body>
 
   <div class="profile-card-custom" id="myProfileCard">
+    <!-- FOTO -->
     <img src="https://lh3.googleusercontent.com/pw/AP1GczOexhgpWTr35eHagJ29Ef9X-LCGadrJnKl_njuHuu36pGF9apJYHEUunM_ZLPlED1mSF3hlESvkuOuHO9q_ihEh_pFVs7_65BhSoz1JKurpNwPAr3aEh2tIXm8hJvYUGK2j7hJN_BsLeJzAXyHqnM7Q=w1024-h576-s-no-gm?authuser=0" 
-         alt="Foto Profil" 
-         class="profile-pic-custom" 
-         id="profile-image" 
-         onerror="this.src='https://placehold.co/200x200/E0E0E0/777777?text=Foto';">
+         alt="Foto Profil" class="profile-pic-custom" id="profile-image">
     
     <div class="profile-text-custom">
       <h2 id="profile-name">Loading...</h2> 
       <div class="subtitle" id="profile-subtitle">Loading...</div> 
+      
+      <!-- TAGS SKILL DARI CV -->
+      <div class="skill-tags" id="skill-container">
+        <!-- Akan diisi oleh JS -->
+      </div>
+
       <div id="profile-bio"></div> 
+
+      <div class="action-buttons">
+        <a href="#" class="btn btn-primary" id="btn-cv">Download CV</a>
+        <a href="#" class="btn btn-secondary" id="btn-email">Email Saya</a>
+      </div>
+
+      <div class="social-links">
+        <!-- LinkedIn -->
+        <a href="#" target="_blank" id="link-linkedin">
+          <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="#" target="_blank" id="link-instagram">
+          <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+      </div>
+
     </div>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // DATA DARI CV KAMU
       const CONFIG = {
-        name: "Halo, Saya Labiib!",
-        subtitle: "Biology Educator | Visual Learning Specialist", 
-        // GANTI FOTO DI SINI JIKA PERLU
+        name: "Labiib Defyanda",
+        
+        // Branding Baru: Jujur & Administratif
+        subtitle: "Education Management | Administrative Support | Biology Graduate", 
+        
+        // Link - JANGAN LUPA DIISI
+        email: "labiib39@gmail.com",
+        linkedin: "https://www.linkedin.com/in/labiib-defyanda", // Ganti kalau salah
+        instagram: "https://instagram.com/labiibdlin41", // Ganti kalau salah
+        cvLink: "CV Indo.pdf", // Pastikan nama file PDF di GitHub sama persis ini
+        
         imageUrl: "https://lh3.googleusercontent.com/pw/AP1GczOexhgpWTr35eHagJ29Ef9X-LCGadrJnKl_njuHuu36pGF9apJYHEUunM_ZLPlED1mSF3hlESvkuOuHO9q_ihEh_pFVs7_65BhSoz1JKurpNwPAr3aEh2tIXm8hJvYUGK2j7hJN_BsLeJzAXyHqnM7Q=w1024-h576-s-no-gm?authuser=0",
-        imageAlt: "Foto Profil Labiib",
+        
+        // Skill Tags (Biar rekruter tau kamu bisa apa aja)
+        skills: ["Project Management", "Class Administration", "Google Workspace", "Final Cut Pro"],
+
+        // Bio Baru: Fokus ke Organisasi & Admin
         bio: [
-          "Lulusan Pendidikan Biologi (S.Pd) dengan spesialisasi pengembangan media pembelajaran visual dan interaktif. Berpengalaman memimpin HIMA Biologi UNY dan mengelola proyek edukasi strategis.",
-          "Saya menggabungkan sains dan kreativitas visual untuk mengubah materi biologi yang kompleks menjadi pengalaman belajar yang intuitif. Siap berkontribusi dalam dunia pendidikan, manajemen proyek, dan pengembangan konten kreatif."
+          "Mahasiswa tingkat akhir Pendidikan Biologi UNY dengan pengalaman nyata dalam **pengelolaan administrasi akademik** dan **manajemen organisasi**. Terbiasa mengelola data laporan, arsip, dan penjadwalan menggunakan Google Workspace.",
+          "Memiliki latar belakang kepemimpinan sebagai **Ketua HIMA** dan pengalaman kerja sebagai Asisten Pengelola Kelas. Saya adalah individu disiplin yang siap mendukung operasional proyek pendidikan dan administrasi perkantoran."
         ]
       };
 
       try {
         document.getElementById('profile-name').textContent = CONFIG.name;
         document.getElementById('profile-subtitle').textContent = CONFIG.subtitle;
-        const img = document.getElementById('profile-image');
-        if(CONFIG.imageUrl) img.src = CONFIG.imageUrl;
-        img.alt = CONFIG.imageAlt;
+        document.getElementById('profile-image').src = CONFIG.imageUrl;
+        
+        document.getElementById('btn-email').href = "mailto:" + CONFIG.email;
+        document.getElementById('btn-cv').href = CONFIG.cvLink;
+        document.getElementById('link-linkedin').href = CONFIG.linkedin;
+        document.getElementById('link-instagram').href = CONFIG.instagram;
+        
+        // Render Bio
         const bio = document.getElementById('profile-bio');
         bio.innerHTML = '';
         CONFIG.bio.forEach(t => { 
           const p = document.createElement('p'); 
-          p.textContent = t; 
+          // Parse Bold Text (**text**) jadi <strong>
+          p.innerHTML = t.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
           bio.appendChild(p); 
         });
-      } catch (e) {}
+
+        // Render Skill Tags
+        const skillContainer = document.getElementById('skill-container');
+        skillContainer.innerHTML = '';
+        CONFIG.skills.forEach(s => {
+          const tag = document.createElement('span');
+          tag.className = 'tag';
+          tag.textContent = s;
+          skillContainer.appendChild(tag);
+        });
+
+      } catch (e) { console.error(e); }
       
       const card = document.getElementById('myProfileCard');
       if (card) {
-        const obs = new IntersectionObserver((e) => {
-          e.forEach(ent => { if (ent.isIntersecting) { ent.target.classList.add('is-visible'); obs.unobserve(ent.target); }});
-        }, { threshold: 0.1 });
-        obs.observe(card);
+        setTimeout(() => card.classList.add('is-visible'), 100);
       }
     });
   </script>
