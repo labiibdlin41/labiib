@@ -14,6 +14,8 @@
     background-color: #F7F9F0; /* Ghibli Cream */
     color: #333;
     overflow-x: hidden;
+    /* Mencegah seleksi teks (opsional, kalau mau extrem) */
+    /* user-select: none; */ 
   }
 
   .main-container {
@@ -23,6 +25,22 @@
     display: flex;
     flex-direction: column;
     gap: 80px; 
+  }
+
+  /* === PELINDUNG GAMBAR (ANTI-THEFT CSS) === */
+  /* Mencegah drag gambar */
+  img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none; /* Ini bikin gambar gak bisa diklik kanan di beberapa browser */
+  }
+
+  /* Tapi tombol harus tetap bisa diklik, jadi kita override pointer-events */
+  .social-icon, .btn {
+    pointer-events: auto;
   }
 
   /* === SECTION 1: PROFIL === */
@@ -136,10 +154,20 @@
   .gallery-item { background: white; border-radius: 16px; overflow: hidden; border: 1px solid #E8F5E9; box-shadow: 0 8px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; opacity: 0; transform: translateY(30px); }
   .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(85, 124, 85, 0.15); }
   
-  /* Style Khusus untuk Gambar (termasuk GIF) agar pas di kotak */
-  .gallery-img-wrapper { width: 100%; height: 200px; overflow: hidden; background: #eee; display: flex; align-items: center; justify-content: center; }
+  .gallery-img-wrapper { width: 100%; height: 200px; overflow: hidden; background: #eee; display: flex; align-items: center; justify-content: center; position: relative; }
+  
+  /* LAYER PELINDUNG VISUAL (Opsional: Overlay transparan) */
+  .gallery-img-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* Di atas gambar */
+  }
+
   .gallery-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-  /* Khusus GIF Logo biar gak kepotong (Contain) */
   .gallery-img.logo-type { object-fit: contain; padding: 20px; background: #f9f9f9; } 
 
   .gallery-item:hover .gallery-img { transform: scale(1.05); }
@@ -171,7 +199,8 @@
     
     <!-- SECTION 1: PROFIL -->
     <div class="profile-card-custom" id="myProfileCard">
-      <img src="" alt="Foto Profil" class="profile-pic-custom" id="profile-image">
+      <!-- GANTI src dengan fotomu yang sudah diupload di GitHub -->
+      <img src="https://placehold.co/220x220/E8F5E9/557C55?text=FOTO" alt="Foto Profil" class="profile-pic-custom" id="profile-image">
       
       <div class="profile-text-custom">
         <h2 id="profile-name">Loading...</h2> 
@@ -241,11 +270,11 @@
       <h3 class="section-title" id="gallery-title">Featured Projects</h3>
       <div class="gallery-grid" id="gallery-grid">
         
-        <!-- ITEM 1: LOGO ANIMASI (Ditaruh di sini) -->
+        <!-- ITEM 1: LOGO ANIMASI -->
         <div class="gallery-item">
           <div class="gallery-img-wrapper">
-             <!-- Pastikan file logo.gif sudah diupload -->
-             <img src="output-onlinegiftools.gif" class="gallery-img logo-type" alt="Logo Animation" onerror="this.src='https://placehold.co/600x400/F5F5F5/CCCCCC?text=Upload+logo.gif';">
+             <!-- PASTE NAMA FILE LOGO GIF DISINI -->
+             <img src="logo.gif" class="gallery-img logo-type" alt="Logo Animation" onerror="this.src='https://placehold.co/600x400/F5F5F5/CCCCCC?text=Upload+logo.gif';">
           </div>
           <div class="gallery-content">
             <div class="gallery-category">Motion Graphics</div>
@@ -257,7 +286,7 @@
         <!-- ITEM 2: HIMA BIOLOGY -->
         <div class="gallery-item">
           <div class="gallery-img-wrapper">
-             <!-- GANTI dengan foto HIMA -->
+             <!-- GANTI src DENGAN FOTO KAMU -->
              <img src="https://placehold.co/600x400/E8F5E9/557C55?text=HIMA+Biology" class="gallery-img" alt="HIMA Biology">
           </div>
           <div class="gallery-content">
@@ -270,7 +299,7 @@
         <!-- ITEM 3: LPP AGRO -->
         <div class="gallery-item">
           <div class="gallery-img-wrapper">
-             <!-- GANTI dengan foto LPP Agro -->
+             <!-- GANTI src DENGAN FOTO KAMU -->
              <img src="https://placehold.co/600x400/E3F2FD/1565C0?text=LPP+Agro" class="gallery-img" alt="Admin Kelas">
           </div>
           <div class="gallery-content">
@@ -291,6 +320,14 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // PELINDUNG KLIK KANAN (JAVASCRIPT)
+      // Mencegah klik kanan pada semua gambar
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('contextmenu', function(e) {
+          e.preventDefault(); // Membatalkan menu klik kanan
+        });
+      });
+
       const CONFIG = {
         name: "Labiib Defyanda",
         subtitle: "Education Management | Administrative Support | Biology Graduate", 
@@ -298,6 +335,7 @@
         linkedin: "https://www.linkedin.com/in/labiib-defyanda", 
         instagram: "https://instagram.com/labiibdlin41", 
         cvLink: "CV Indo.pdf",
+        // GANTI INI DENGAN NAMA FILE FOTOMU YANG DIUPLOAD DI GITHUB
         imageUrl: "https://lh3.googleusercontent.com/pw/AP1GczOexhgpWTr35eHagJ29Ef9X-LCGadrJnKl_njuHuu36pGF9apJYHEUunM_ZLPlED1mSF3hlESvkuOuHO9q_ihEh_pFVs7_65BhSoz1JKurpNwPAr3aEh2tIXm8hJvYUGK2j7hJN_BsLeJzAXyHqnM7Q=w1024-h576-s-no-gm?authuser=0",
         yudisium: "S.Pd. Candidate (Nov 2025)",
         toefl: "TOEFL ITP: 547",
@@ -311,7 +349,10 @@
       try {
         document.getElementById('profile-name').textContent = CONFIG.name;
         document.getElementById('profile-subtitle').textContent = CONFIG.subtitle;
-        document.getElementById('profile-image').src = CONFIG.imageUrl;
+        // Jika foto profil dari CONFIG belum diset/kosong, script tidak akan menimpa
+        if (CONFIG.imageUrl && !CONFIG.imageUrl.includes('placehold')) {
+           document.getElementById('profile-image').src = CONFIG.imageUrl;
+        }
         
         document.getElementById('btn-email').href = "mailto:" + CONFIG.email;
         document.getElementById('btn-cv').href = CONFIG.cvLink;
@@ -356,7 +397,6 @@
       animate('service-2', 1000);
       animate('gallery-title', 1200);
       
-      // Animasi Gallery Items
       const galleryItems = document.querySelectorAll('.gallery-item');
       galleryItems.forEach((item, index) => {
         setTimeout(() => {
