@@ -22,7 +22,7 @@
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
-    gap: 80px; /* Jarak antar section lebih lega */
+    gap: 80px; 
   }
 
   /* === SECTION 1: PROFIL === */
@@ -40,6 +40,11 @@
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .profile-card-custom.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .profile-pic-custom {
@@ -94,7 +99,7 @@
   .social-icon { width: 24px; height: 24px; fill: #888; transition: all 0.3s ease; }
   .social-icon:hover { fill: #557C55; transform: scale(1.1); }
 
-  /* === TITLES === */
+  /* === TITLES (DIPERBAIKI) === */
   .section-title {
     text-align: center;
     font-size: 1.6rem;
@@ -102,9 +107,9 @@
     margin-bottom: 40px;
     font-weight: 700;
     position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
+    display: block; /* FIX: Ubah jadi block biar lebar full */
+    width: 100%;    /* FIX: Pastikan lebar 100% */
+    /* FIX: Hapus left & transform yang bikin miring */
   }
   
   .section-title::after {
@@ -113,7 +118,7 @@
     width: 60px;
     height: 4px;
     background: #C5E1A5;
-    margin: 10px auto 0;
+    margin: 10px auto 0; /* Auto margin biar garisnya nengah */
     border-radius: 2px;
   }
 
@@ -127,7 +132,7 @@
   .service-list li { margin-bottom: 10px; padding-left: 25px; position: relative; color: #555; font-size: 0.95rem; line-height: 1.5; }
   .service-list li::before { content: "✓"; position: absolute; left: 0; color: #557C55; font-weight: bold; }
 
-  /* === SECTION 3: GALLERY (NEW) === */
+  /* === SECTION 3: GALLERY === */
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -207,7 +212,7 @@
     .profile-text-custom { text-align: center; }
     .highlights, .skill-tags, .action-buttons, .social-links { justify-content: center; }
     .services-grid { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: 1fr; } /* Gallery jadi 1 kolom di HP */
+    .gallery-grid { grid-template-columns: 1fr; } 
   }
 </style>
 </head>
@@ -282,7 +287,7 @@
       </div>
     </div>
 
-    <!-- SECTION 3: GALLERY / PROJECTS (BARU) -->
+    <!-- SECTION 3: GALLERY / PROJECTS -->
     <div>
       <h3 class="section-title" id="gallery-title">Featured Projects</h3>
       <div class="gallery-grid" id="gallery-grid">
@@ -330,7 +335,7 @@
     </div>
 
     <footer>
-      &copy; 2025 Labiib Defyanda.
+      &copy; 2025 Labiib Defyanda. Built with AI Assistance.
     </footer>
 
   </div>
