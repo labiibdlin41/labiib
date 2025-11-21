@@ -19,7 +19,7 @@
   .main-container {
     max-width: 950px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 60px 20px; /* Padding atas ditambah karena gak ada navbar */
     display: flex;
     flex-direction: column;
     gap: 80px; 
@@ -99,7 +99,7 @@
   .social-icon { width: 24px; height: 24px; fill: #888; transition: all 0.3s ease; }
   .social-icon:hover { fill: #557C55; transform: scale(1.1); }
 
-  /* === TITLES (DIPERBAIKI) === */
+  /* === TITLES === */
   .section-title {
     text-align: center;
     font-size: 1.6rem;
@@ -107,9 +107,8 @@
     margin-bottom: 40px;
     font-weight: 700;
     position: relative;
-    display: block; /* FIX: Ubah jadi block biar lebar full */
-    width: 100%;    /* FIX: Pastikan lebar 100% */
-    /* FIX: Hapus left & transform yang bikin miring */
+    display: block;
+    width: 100%;
   }
   
   .section-title::after {
@@ -118,7 +117,7 @@
     width: 60px;
     height: 4px;
     background: #C5E1A5;
-    margin: 10px auto 0; /* Auto margin biar garisnya nengah */
+    margin: 10px auto 0;
     border-radius: 2px;
   }
 
@@ -133,71 +132,21 @@
   .service-list li::before { content: "✓"; position: absolute; left: 0; color: #557C55; font-weight: bold; }
 
   /* === SECTION 3: GALLERY === */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-  }
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+  .gallery-item { background: white; border-radius: 16px; overflow: hidden; border: 1px solid #E8F5E9; box-shadow: 0 8px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; opacity: 0; transform: translateY(30px); }
+  .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(85, 124, 85, 0.15); }
+  
+  /* Style Khusus untuk Gambar (termasuk GIF) agar pas di kotak */
+  .gallery-img-wrapper { width: 100%; height: 200px; overflow: hidden; background: #eee; display: flex; align-items: center; justify-content: center; }
+  .gallery-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  /* Khusus GIF Logo biar gak kepotong (Contain) */
+  .gallery-img.logo-type { object-fit: contain; padding: 20px; background: #f9f9f9; } 
 
-  .gallery-item {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid #E8F5E9;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  .gallery-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(85, 124, 85, 0.15);
-  }
-
-  .gallery-img-wrapper {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    background: #eee;
-  }
-
-  .gallery-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-
-  .gallery-item:hover .gallery-img {
-    transform: scale(1.05);
-  }
-
-  .gallery-content {
-    padding: 20px;
-  }
-
-  .gallery-category {
-    font-size: 0.75rem;
-    color: #557C55;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-  }
-
-  .gallery-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #2C3E50;
-    margin: 0 0 10px 0;
-  }
-
-  .gallery-desc {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.5;
-  }
+  .gallery-item:hover .gallery-img { transform: scale(1.05); }
+  .gallery-content { padding: 20px; }
+  .gallery-category { font-size: 0.75rem; color: #557C55; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+  .gallery-title { font-size: 1.1rem; font-weight: 600; color: #2C3E50; margin: 0 0 10px 0; }
+  .gallery-desc { font-size: 0.9rem; color: #666; line-height: 1.5; }
 
   /* Scroll Indicator */
   .scroll-indicator { text-align: center; margin-top: -40px; color: #557C55; animation: bounce 2s infinite; opacity: 0; font-weight: 500; font-size: 0.9rem; }
@@ -292,10 +241,23 @@
       <h3 class="section-title" id="gallery-title">Featured Projects</h3>
       <div class="gallery-grid" id="gallery-grid">
         
-        <!-- ITEM 1: ORGANISASI -->
+        <!-- ITEM 1: LOGO ANIMASI (Ditaruh di sini) -->
         <div class="gallery-item">
           <div class="gallery-img-wrapper">
-             <!-- Ganti src dengan foto HIMA kamu nanti -->
+             <!-- Pastikan file logo.gif sudah diupload -->
+             <img src="logo.gif" class="gallery-img logo-type" alt="Logo Animation" onerror="this.src='https://placehold.co/600x400/F5F5F5/CCCCCC?text=Upload+logo.gif';">
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-category">Motion Graphics</div>
+            <h4 class="gallery-title">Animated Brand Logo</h4>
+            <p class="gallery-desc">Eksplorasi animasi logo menggunakan teknik motion graphics untuk branding personal.</p>
+          </div>
+        </div>
+
+        <!-- ITEM 2: HIMA BIOLOGY -->
+        <div class="gallery-item">
+          <div class="gallery-img-wrapper">
+             <!-- GANTI dengan foto HIMA -->
              <img src="https://placehold.co/600x400/E8F5E9/557C55?text=HIMA+Biology" class="gallery-img" alt="HIMA Biology">
           </div>
           <div class="gallery-content">
@@ -305,23 +267,10 @@
           </div>
         </div>
 
-        <!-- ITEM 2: CREATIVE -->
+        <!-- ITEM 3: LPP AGRO -->
         <div class="gallery-item">
           <div class="gallery-img-wrapper">
-             <!-- Ganti src dengan screenshot video Apple Motion kamu -->
-             <img src="https://placehold.co/600x400/FFF3E0/F57F17?text=Apple+Motion" class="gallery-img" alt="Motion Graphics">
-          </div>
-          <div class="gallery-content">
-            <div class="gallery-category">Visual Media</div>
-            <h4 class="gallery-title">Media Pembelajaran Interaktif</h4>
-            <p class="gallery-desc">Pengembangan konten visual berbasis Apple Motion dan FCP untuk memvisualisasikan konsep biologi kompleks.</p>
-          </div>
-        </div>
-
-        <!-- ITEM 3: WORK EXPERIENCE -->
-        <div class="gallery-item">
-          <div class="gallery-img-wrapper">
-             <!-- Ganti src dengan foto kegiatan LPP Agro -->
+             <!-- GANTI dengan foto LPP Agro -->
              <img src="https://placehold.co/600x400/E3F2FD/1565C0?text=LPP+Agro" class="gallery-img" alt="Admin Kelas">
           </div>
           <div class="gallery-content">
