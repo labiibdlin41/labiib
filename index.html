@@ -23,7 +23,6 @@
     display: flex;
     flex-direction: column;
     gap: 80px; 
-    /* Pastikan container utama memusatkan isinya jika flex direction column */
     align-items: stretch; 
   }
 
@@ -44,10 +43,7 @@
     transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .profile-card-custom.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .profile-card-custom.is-visible { opacity: 1; transform: translateY(0); }
 
   .profile-pic-custom {
     width: 220px;
@@ -129,9 +125,9 @@
   /* === SECTION 2: SERVICES === */
   .services-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 30px; 
-    justify-content: center; /* Tengahkan grid jika item sedikit */
+    justify-content: center; 
   }
   
   .service-card { background: white; padding: 30px; border-radius: 20px; border: 1px solid #E8F5E9; box-shadow: 0 10px 25px rgba(85, 124, 85, 0.08); transition: transform 0.3s ease; opacity: 0; transform: translateY(30px); }
@@ -142,18 +138,17 @@
   .service-list li { margin-bottom: 10px; padding-left: 25px; position: relative; color: #555; font-size: 0.95rem; line-height: 1.5; }
   .service-list li::before { content: "✓"; position: absolute; left: 0; color: #557C55; font-weight: bold; }
 
-  /* === SECTION 3: GALLERY (FIXED CENTER) === */
+  /* === SECTION 3: GALLERY (BACKGROUND FIX) === */
   .gallery-grid { 
-    display: flex; /* Ganti jadi Flexbox biar gampang di-center */
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* INI KUNCINYA: Biar semua kartu di tengah */
+    justify-content: center;
     gap: 25px; 
   }
 
   .gallery-item { 
-    /* Lebar kartu tetap responsif */
-    flex: 1 1 300px; /* Minimal 300px, bisa melebar */
-    max-width: 350px; /* Jangan terlalu lebar kalau sendirian */
+    flex: 1 1 300px; 
+    max-width: 350px; 
     background: white; 
     border-radius: 16px; 
     overflow: hidden; 
@@ -166,7 +161,18 @@
 
   .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(85, 124, 85, 0.15); }
   
-  .gallery-img-wrapper { width: 100%; height: 220px; overflow: hidden; background: #eee; display: flex; align-items: center; justify-content: center; position: relative; }
+  /* UPDATE PENTING: Background Putih & Border Bottom */
+  .gallery-img-wrapper { 
+    width: 100%; 
+    height: 220px; 
+    overflow: hidden; 
+    background: #ffffff; /* UBAH JADI PUTIH */
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    position: relative; 
+    border-bottom: 1px solid #f0f0f0;
+  }
   
   .gallery-img { 
     width: 100%; height: 100%; object-fit: cover; 
@@ -175,11 +181,35 @@
   }
   .gallery-img.active { opacity: 1; } 
   
-  .gallery-img.contain-mode { object-fit: contain; padding: 15px; background: #f9f9f9; } 
-  .gallery-img.logo-type { object-fit: contain; padding: 25px; background: #f9f9f9; }
+  /* UPDATE PENTING: Hapus padding berlebih, pastikan contain dan background putih */
+  .gallery-img.contain-mode { 
+    object-fit: contain; 
+    padding: 0; /* Hapus padding biar gambar bisa full di kotak */
+    background: #ffffff; 
+  } 
+  
+  .gallery-img.logo-type { 
+    object-fit: contain; 
+    padding: 30px; /* Logo boleh ada padding dikit biar gak sesak */
+    background: #ffffff; 
+  }
 
-  .gallery-content { padding: 20px; }
-  .gallery-category { font-size: 0.75rem; color: #557C55; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+  /* UPDATE PENTING: Teks Center */
+  .gallery-content { 
+    padding: 25px 20px; 
+    text-align: center; 
+  }
+
+  .gallery-category { 
+    font-size: 0.75rem; 
+    color: #557C55; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    margin-bottom: 8px; 
+    display: block; 
+  }
+
   .gallery-title { font-size: 1.1rem; font-weight: 600; color: #2C3E50; margin: 0 0 10px 0; }
   .gallery-desc { font-size: 0.9rem; color: #666; line-height: 1.5; }
 
@@ -196,7 +226,7 @@
     .profile-text-custom { text-align: center; }
     .highlights, .skill-tags, .action-buttons, .social-links { justify-content: center; }
     .services-grid { grid-template-columns: 1fr; }
-    .gallery-item { max-width: 100%; } /* Di HP, kartu boleh selebar layar */
+    .gallery-item { max-width: 100%; }
   }
 </style>
 </head>
