@@ -19,7 +19,7 @@
   .main-container {
     max-width: 950px;
     margin: 0 auto;
-    padding: 60px 20px; 
+    padding: 60px 20px; /* Padding atas agak besar karena tidak ada navbar */
     display: flex;
     flex-direction: column;
     gap: 80px; 
@@ -99,30 +99,30 @@
   .social-icon { width: 24px; height: 24px; fill: #888; transition: all 0.3s ease; }
   .social-icon:hover { fill: #557C55; transform: scale(1.1); }
 
-  /* === TITLES === */
+  /* === TITLES (FIXED CENTER) === */
   .section-title {
     text-align: center;
     font-size: 1.6rem;
     color: #2C3E50;
     margin-bottom: 40px;
     font-weight: 700;
-   position: relative;
-   display: flex;             /* Pakai Flexbox biar gampang nengahin */
-    flex-direction: column;    /* Tumpuk teks dan garis */
-    align-items: center;       /* Paksa semua anak (garis) ke tengah */
-   justify-content: center;
-   width: 100%;
-}
-
+    position: relative;
+    display: flex;             
+    flex-direction: column;    
+    align-items: center;       
+    justify-content: center;
+    width: 100%;
+  }
+  
   .section-title::after {
     content: "";
     display: block;
-   width: 60px;
-   height: 4px;
-   background: #C5E1A5; /* Hijau Ghibli */
-   margin-top: 10px;    /* Jarak dari teks ke garis */
-   border-radius: 2px;
-}
+    width: 60px;
+    height: 4px;
+    background: #C5E1A5;
+    margin-top: 10px;
+    border-radius: 2px;
+  }
 
   /* === SECTION 2: SERVICES === */
   .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
@@ -134,14 +134,13 @@
   .service-list li { margin-bottom: 10px; padding-left: 25px; position: relative; color: #555; font-size: 0.95rem; line-height: 1.5; }
   .service-list li::before { content: "✓"; position: absolute; left: 0; color: #557C55; font-weight: bold; }
 
-  /* === SECTION 3: GALLERY (SLIDESHOW ENABLED) === */
+  /* === SECTION 3: GALLERY === */
   .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
   .gallery-item { background: white; border-radius: 16px; overflow: hidden; border: 1px solid #E8F5E9; box-shadow: 0 8px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; opacity: 0; transform: translateY(30px); }
   .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(85, 124, 85, 0.15); }
   
   .gallery-img-wrapper { width: 100%; height: 220px; overflow: hidden; background: #eee; display: flex; align-items: center; justify-content: center; position: relative; }
   
-  /* Slideshow Logic CSS */
   .gallery-img { 
     width: 100%; height: 100%; object-fit: cover; 
     position: absolute; top: 0; left: 0;
