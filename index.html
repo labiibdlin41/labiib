@@ -106,20 +106,23 @@
     color: #2C3E50;
     margin-bottom: 40px;
     font-weight: 700;
-    position: relative;
-    display: block;
-    width: 100%;
-  }
-  
+   position: relative;
+   display: flex;             /* Pakai Flexbox biar gampang nengahin */
+    flex-direction: column;    /* Tumpuk teks dan garis */
+    align-items: center;       /* Paksa semua anak (garis) ke tengah */
+   justify-content: center;
+   width: 100%;
+}
+
   .section-title::after {
     content: "";
     display: block;
-    width: 60px;
-    height: 4px;
-    background: #C5E1A5;
-    margin: 10px auto 0;
-    border-radius: 2px;
-  }
+   width: 60px;
+   height: 4px;
+   background: #C5E1A5; /* Hijau Ghibli */
+   margin-top: 10px;    /* Jarak dari teks ke garis */
+   border-radius: 2px;
+}
 
   /* === SECTION 2: SERVICES === */
   .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
