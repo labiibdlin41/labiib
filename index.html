@@ -138,12 +138,18 @@
   .service-list li { margin-bottom: 10px; padding-left: 25px; position: relative; color: #555; font-size: 0.95rem; line-height: 1.5; }
   .service-list li::before { content: "✓"; position: absolute; left: 0; color: #557C55; font-weight: bold; }
 
-  /* === SECTION 3: GALLERY === */
+  /* === SECTION 3: GALLERY (3 KOLOM SEJAJAR) === */
   .gallery-grid { 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px; 
     justify-content: center;
+  }
+
+  @media (min-width: 900px) {
+    .gallery-grid { 
+      grid-template-columns: repeat(3, 1fr); 
+    }
   }
 
   .gallery-item { 
@@ -173,7 +179,7 @@
     border-bottom: 1px solid #f0f0f0;
   }
   
-  /* STYLE STANDAR UNTUK GAMBAR SLIDESHOW (COVER) */
+  /* DEFAULT: COVER (Penuh) */
   .gallery-img { 
     width: 100%; height: 100%; 
     object-fit: cover; 
@@ -183,19 +189,18 @@
   }
   .gallery-img.active { opacity: 1; } 
   
-  /* STYLE KHUSUS LOGO (JURUS PAKSA TENGAH) */
-  /* Kita matikan Absolute, kita biarkan Flexbox parent yang menengahkan */
+  /* KHUSUS LOGO: Contain + Center Paksa */
   .gallery-img.logo-type { 
-    position: relative !important; /* Paksa Relative */
+    position: relative !important;
     width: auto !important; 
     height: auto !important; 
-    max-width: 85%; /* Maksimal lebar 85% dari kotak */
-    max-height: 85%; /* Maksimal tinggi 85% dari kotak */
+    max-width: 85%; 
+    max-height: 85%; 
     object-fit: contain; 
     padding: 0; 
-    top: auto; left: auto; /* Reset posisi */
+    top: auto; left: auto; 
     background: transparent; 
-    opacity: 1; /* Selalu muncul karena gak di-slideshow */
+    opacity: 1; 
   }
 
   .gallery-img.contain-mode { 
@@ -241,10 +246,6 @@
     .highlights, .skill-tags, .action-buttons, .social-links { justify-content: center; }
     .services-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: 1fr; } 
-  }
-  
-  @media (min-width: 900px) {
-    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
   }
 </style>
 </head>
@@ -347,7 +348,6 @@
         linkedin: "https://www.linkedin.com/in/labiib-defyanda", 
         instagram: "https://instagram.com/labiibdlin41", 
         cvLink: "CV Indo.pdf",
-        // GANTI INI DENGAN NAMA FILE FOTOMU YANG DIUPLOAD DI GITHUB
         imageUrl: "https://lh3.googleusercontent.com/pw/AP1GczOexhgpWTr35eHagJ29Ef9X-LCGadrJnKl_njuHuu36pGF9apJYHEUunM_ZLPlED1mSF3hlESvkuOuHO9q_ihEh_pFVs7_65BhSoz1JKurpNwPAr3aEh2tIXm8hJvYUGK2j7hJN_BsLeJzAXyHqnM7Q=w1024-h576-s-no-gm?authuser=0",
         yudisium: "S.Pd. Candidate (Nov 2025)",
         toefl: "TOEFL ITP: 547",
@@ -371,16 +371,16 @@
           title: "Interactive Learning Materials",
           category: "Education",
           desc: "Perancangan materi presentasi (PPT) dan modul visual untuk memfasilitasi pemahaman konsep biologi.",
-          // Slot 2
+          // Slot 2: Slideshow PPT
           images: ["Picture1.png", "Picture2.png", "Picture3.png", "Picture4.png", "Picture5.png", "Picture6.png", "Picture7.png"], 
           type: "cover"
         },
         {
-          title: "Class Management System",
-          category: "Administration",
-          desc: "Manajemen data peserta dan administrasi akademik menggunakan Google Workspace untuk proyek BPDP.",
-          // Slot 3
-          images: ["https://placehold.co/600x400/E3F2FD/1565C0?text=Admin+Report"],
+          title: "LPP Agro Field Coordination",
+          category: "Project Management",
+          desc: "Dokumentasi dan koordinasi lapangan peserta pelatihan kelapa sawit (BPDP), memastikan kelancaran kegiatan operasional.",
+          // Slot 3: Foto Lapangan (Ganti dengan Picture3.png)
+          images: ["LPP1.png", "LPP2.png", "LPP3.png"],
           type: "cover"
         }
       ];
@@ -428,7 +428,6 @@
           project.images.forEach((imgSrc, idx) => {
             const activeClass = idx === 0 ? 'active' : '';
             const containClass = project.type === 'contain' ? 'contain-mode' : '';
-            // LOGO TYPE: Tambahkan class khusus di sini
             const logoClass = project.type === 'logo' ? 'logo-type' : '';
             
             imgHTML += `<img src="${imgSrc}" class="gallery-img ${activeClass} ${containClass} ${logoClass}" alt="${project.title}" onerror="this.src='https://placehold.co/600x400/F5F5F5/999?text=Upload+File';">`;
