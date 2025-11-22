@@ -17,7 +17,7 @@
   }
 
   .main-container {
-    max-width: 1100px; /* Lebarkan container biar muat 3 kolom enak */
+    max-width: 1100px;
     margin: 0 auto;
     padding: 60px 20px; 
     display: flex;
@@ -138,10 +138,9 @@
   .service-list li { margin-bottom: 10px; padding-left: 25px; position: relative; color: #555; font-size: 0.95rem; line-height: 1.5; }
   .service-list li::before { content: "✓"; position: absolute; left: 0; color: #557C55; font-weight: bold; }
 
-  /* === SECTION 3: GALLERY (3 KOLOM SEJAJAR) === */
+  /* === SECTION 3: GALLERY === */
   .gallery-grid { 
     display: grid;
-    /* INI KUNCINYA: Paksa 3 Kolom di layar lebar */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px; 
     justify-content: center;
@@ -174,20 +173,29 @@
     border-bottom: 1px solid #f0f0f0;
   }
   
+  /* STYLE STANDAR UNTUK GAMBAR SLIDESHOW (COVER) */
   .gallery-img { 
     width: 100%; height: 100%; 
-    object-fit: cover; /* Default COVER (Penuh) untuk gambar biasa */
+    object-fit: cover; 
     position: absolute; 
     top: 0; left: 0;
     opacity: 0; transition: opacity 1s ease-in-out; 
   }
   .gallery-img.active { opacity: 1; } 
   
-  /* LOGO FIX: Contain (utuh) tapi Padding DIKURANGI biar Gede */
+  /* STYLE KHUSUS LOGO (JURUS PAKSA TENGAH) */
+  /* Kita matikan Absolute, kita biarkan Flexbox parent yang menengahkan */
   .gallery-img.logo-type { 
+    position: relative !important; /* Paksa Relative */
+    width: auto !important; 
+    height: auto !important; 
+    max-width: 85%; /* Maksimal lebar 85% dari kotak */
+    max-height: 85%; /* Maksimal tinggi 85% dari kotak */
     object-fit: contain; 
-    padding: 10px; /* Padding kecil biar logo GEDE */
-    background: #ffffff; 
+    padding: 0; 
+    top: auto; left: auto; /* Reset posisi */
+    background: transparent; 
+    opacity: 1; /* Selalu muncul karena gak di-slideshow */
   }
 
   .gallery-img.contain-mode { 
@@ -232,10 +240,9 @@
     .profile-text-custom { text-align: center; }
     .highlights, .skill-tags, .action-buttons, .social-links { justify-content: center; }
     .services-grid { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: 1fr; } /* Di HP jadi 1 kolom */
+    .gallery-grid { grid-template-columns: 1fr; } 
   }
   
-  /* Tablet/Laptop Kecil: Tetap paksa 3 kolom jika muat */
   @media (min-width: 900px) {
     .gallery-grid { grid-template-columns: repeat(3, 1fr); }
   }
@@ -420,8 +427,8 @@
           let imgHTML = '';
           project.images.forEach((imgSrc, idx) => {
             const activeClass = idx === 0 ? 'active' : '';
-            // Jika tidak ada type khusus (atau type=cover), maka default gallery-img (cover) berlaku
             const containClass = project.type === 'contain' ? 'contain-mode' : '';
+            // LOGO TYPE: Tambahkan class khusus di sini
             const logoClass = project.type === 'logo' ? 'logo-type' : '';
             
             imgHTML += `<img src="${imgSrc}" class="gallery-img ${activeClass} ${containClass} ${logoClass}" alt="${project.title}" onerror="this.src='https://placehold.co/600x400/F5F5F5/999?text=Upload+File';">`;
