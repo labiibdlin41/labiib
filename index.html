@@ -19,10 +19,12 @@
   .main-container {
     max-width: 950px;
     margin: 0 auto;
-    padding: 60px 20px; /* Padding atas agak besar karena tidak ada navbar */
+    padding: 60px 20px; 
     display: flex;
     flex-direction: column;
     gap: 80px; 
+    /* Pastikan container utama memusatkan isinya jika flex direction column */
+    align-items: stretch; 
   }
 
   /* === SECTION 1: PROFIL === */
@@ -125,7 +127,13 @@
   }
 
   /* === SECTION 2: SERVICES === */
-  .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .services-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Grid */
+    gap: 30px; 
+    justify-content: center; /* Tengahkan grid jika item sedikit */
+  }
+  
   .service-card { background: white; padding: 30px; border-radius: 20px; border: 1px solid #E8F5E9; box-shadow: 0 10px 25px rgba(85, 124, 85, 0.08); transition: transform 0.3s ease; opacity: 0; transform: translateY(30px); }
   .service-card:hover { transform: translateY(-5px); border-color: #C8E6C9; }
   .service-icon { width: 50px; height: 50px; background: #F1F8E9; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: #557C55; }
@@ -134,9 +142,28 @@
   .service-list li { margin-bottom: 10px; padding-left: 25px; position: relative; color: #555; font-size: 0.95rem; line-height: 1.5; }
   .service-list li::before { content: "✓"; position: absolute; left: 0; color: #557C55; font-weight: bold; }
 
-  /* === SECTION 3: GALLERY === */
-  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-  .gallery-item { background: white; border-radius: 16px; overflow: hidden; border: 1px solid #E8F5E9; box-shadow: 0 8px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; opacity: 0; transform: translateY(30px); }
+  /* === SECTION 3: GALLERY (FIXED CENTER) === */
+  .gallery-grid { 
+    display: flex; /* Ganti jadi Flexbox biar gampang di-center */
+    flex-wrap: wrap;
+    justify-content: center; /* INI KUNCINYA: Biar semua kartu di tengah */
+    gap: 25px; 
+  }
+
+  .gallery-item { 
+    /* Lebar kartu tetap responsif */
+    flex: 1 1 300px; /* Minimal 300px, bisa melebar */
+    max-width: 350px; /* Jangan terlalu lebar kalau sendirian */
+    background: white; 
+    border-radius: 16px; 
+    overflow: hidden; 
+    border: 1px solid #E8F5E9; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05); 
+    transition: all 0.3s ease; 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+
   .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(85, 124, 85, 0.15); }
   
   .gallery-img-wrapper { width: 100%; height: 220px; overflow: hidden; background: #eee; display: flex; align-items: center; justify-content: center; position: relative; }
@@ -169,7 +196,7 @@
     .profile-text-custom { text-align: center; }
     .highlights, .skill-tags, .action-buttons, .social-links { justify-content: center; }
     .services-grid { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: 1fr; } 
+    .gallery-item { max-width: 100%; } /* Di HP, kartu boleh selebar layar */
   }
 </style>
 </head>
@@ -292,18 +319,18 @@
           type: "logo"
         },
         {
-          title: "Interactive Learning Materials", // Judul diganti
+          title: "Interactive Learning Materials",
           category: "Education",
-          desc: "Perancangan materi presentasi (PPT) dan modul visual untuk memfasilitasi pemahaman konsep biologi.", // Deskripsi diganti
-          // Slot 2: Upload gambar PPT-mu disini (Picture1.png, dll)
-          images: ["Picture1.png", "Picture2.png", "Picture3.png", "Picture4.png", "Picture5.png", "Picture6.png", "Picture7.png"], 
+          desc: "Perancangan materi presentasi (PPT) dan modul visual untuk memfasilitasi pemahaman konsep biologi.",
+          // Slot 2
+          images: ["Picture1.png", "Picture2.png"], 
           type: "contain"
         },
         {
           title: "Class Management System",
           category: "Administration",
           desc: "Manajemen data peserta dan administrasi akademik menggunakan Google Workspace untuk proyek BPDP.",
-          // Slot 3: Upload gambar admin disini kalau ada (sementara pake placeholder)
+          // Slot 3
           images: ["https://placehold.co/600x400/E3F2FD/1565C0?text=Admin+Report"],
           type: "contain"
         }
@@ -353,7 +380,6 @@
             const activeClass = idx === 0 ? 'active' : '';
             const containClass = project.type === 'contain' ? 'contain-mode' : '';
             const logoClass = project.type === 'logo' ? 'logo-type' : '';
-            // Tambahkan onerror biar kalo belum upload ga jelek banget
             imgHTML += `<img src="${imgSrc}" class="gallery-img ${activeClass} ${containClass} ${logoClass}" alt="${project.title}" onerror="this.src='https://placehold.co/600x400/F5F5F5/999?text=Upload+File';">`;
           });
 
