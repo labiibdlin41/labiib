@@ -11,7 +11,7 @@
   body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-color: #F7F9F0; /* Ghibli Cream */
+    background-color: #F7F9F0; 
     color: #333;
     overflow-x: hidden;
   }
@@ -97,7 +97,7 @@
   .social-icon { width: 24px; height: 24px; fill: #888; transition: all 0.3s ease; }
   .social-icon:hover { fill: #557C55; transform: scale(1.1); }
 
-  /* === TITLES (FIXED CENTER) === */
+  /* === TITLES === */
   .section-title {
     text-align: center;
     font-size: 1.6rem;
@@ -138,11 +138,11 @@
   .service-list li { margin-bottom: 10px; padding-left: 25px; position: relative; color: #555; font-size: 0.95rem; line-height: 1.5; }
   .service-list li::before { content: "✓"; position: absolute; left: 0; color: #557C55; font-weight: bold; }
 
-  /* === SECTION 3: GALLERY (FIXED CENTER & FULL IMAGE) === */
+  /* === SECTION 3: GALLERY === */
   .gallery-grid { 
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Paksa kartu ke tengah */
+    justify-content: center;
     gap: 25px; 
   }
 
@@ -158,54 +158,58 @@
     opacity: 0; 
     transform: translateY(30px); 
     display: flex;
-    flex-direction: column; /* Susun gambar dan teks vertikal */
+    flex-direction: column;
   }
 
   .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(85, 124, 85, 0.15); }
   
-  /* WRAPPER GAMBAR: PUTIH & BERSIH */
+  /* WRAPPER GAMBAR: KUNCI POSISI TENGAH */
   .gallery-img-wrapper { 
     width: 100%; 
     height: 220px; 
     overflow: hidden; 
-    background: #ffffff; /* Background putih */
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
+    background: #ffffff; 
+    display: flex;           /* Flexbox untuk centering */
+    align-items: center;     /* Center Vertikal */
+    justify-content: center; /* Center Horizontal */
     position: relative; 
     border-bottom: 1px solid #f0f0f0;
   }
   
+  /* DEFAULT: COVER (Penuh) */
   .gallery-img { 
-    width: 100%; height: 100%; 
-    object-fit: cover; /* Default: Cover (Penuh) */
-    position: absolute; top: 0; left: 0;
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* Default memaksa penuh */
+    position: absolute; 
+    top: 0; left: 0;
     opacity: 0; transition: opacity 1s ease-in-out; 
   }
   .gallery-img.active { opacity: 1; } 
   
-  /* Contain Mode: Untuk gambar yang harus utuh (misal Logo) */
+  /* CONTAIN MODE: Untuk gambar yang harus utuh (opsional) */
+  /* Saya matikan paddingnya agar tetap mencoba memenuhi semaksimal mungkin */
   .gallery-img.contain-mode { 
     object-fit: contain; 
     padding: 0; 
     background: #ffffff; 
   } 
   
-  /* Logo Type: Padding lebih besar biar gak mepet */
+  /* LOGO KHUSUS: Butuh padding biar gak mepet */
   .gallery-img.logo-type { 
     object-fit: contain; 
     padding: 35px; 
     background: #ffffff; 
   }
 
-  /* KONTEN TEKS: RATA TENGAH MUTLAK */
+  /* TEKS DIBAWAH GAMBAR */
   .gallery-content { 
     padding: 25px 20px; 
-    text-align: center; /* KUNCI: Rata Tengah */
-    flex-grow: 1; /* Biar tinggi kartu seragam */
+    text-align: center; 
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Pastikan item flex di tengah */
+    align-items: center;
   }
 
   .gallery-category { 
@@ -218,20 +222,8 @@
     display: block; 
   }
 
-  .gallery-title { 
-    font-size: 1.1rem; 
-    font-weight: 600; 
-    color: #2C3E50; 
-    margin: 0 0 10px 0; 
-    width: 100%;
-  }
-  
-  .gallery-desc { 
-    font-size: 0.9rem; 
-    color: #666; 
-    line-height: 1.5; 
-    margin: 0;
-  }
+  .gallery-title { font-size: 1.1rem; font-weight: 600; color: #2C3E50; margin: 0 0 10px 0; width: 100%; }
+  .gallery-desc { font-size: 0.9rem; color: #666; line-height: 1.5; margin: 0; }
 
   /* Scroll Indicator */
   .scroll-indicator { text-align: center; margin-top: -40px; color: #557C55; animation: bounce 2s infinite; opacity: 0; font-weight: 500; font-size: 0.9rem; }
@@ -360,29 +352,28 @@
       };
 
       // === DATA PROJECTS & SLIDESHOW ===
+      // PERHATIKAN: Slot 2 & 3 tidak lagi pakai 'type: contain' agar gambarnya FULL (Cover).
       const PROJECTS_DATA = [
         {
           title: "Animated Brand Logo",
           category: "Personal Branding",
           desc: "Eksplorasi animasi logo menggunakan teknik motion graphics untuk branding personal.",
           images: ["logo.gif"], // Slot 1
-          type: "logo"
+          type: "logo" // Logo tetap butuh padding
         },
         {
           title: "Interactive Learning Materials",
           category: "Education",
           desc: "Perancangan materi presentasi (PPT) dan modul visual untuk memfasilitasi pemahaman konsep biologi.",
-          // Slot 2
           images: ["Picture1.png", "Picture2.png"], 
-          type: "contain"
+          type: "cover" // UBAH JADI COVER: Biar Penuh
         },
         {
           title: "Class Management System",
           category: "Administration",
           desc: "Manajemen data peserta dan administrasi akademik menggunakan Google Workspace untuk proyek BPDP.",
-          // Slot 3
           images: ["https://placehold.co/600x400/E3F2FD/1565C0?text=Admin+Report"],
-          type: "contain"
+          type: "cover" // UBAH JADI COVER: Biar Penuh
         }
       ];
 
@@ -428,9 +419,10 @@
           let imgHTML = '';
           project.images.forEach((imgSrc, idx) => {
             const activeClass = idx === 0 ? 'active' : '';
+            // Jika tidak ada type khusus (atau type=cover), maka default gallery-img (cover) berlaku
             const containClass = project.type === 'contain' ? 'contain-mode' : '';
             const logoClass = project.type === 'logo' ? 'logo-type' : '';
-            // Tambahkan onerror biar kalo belum upload ga jelek banget
+            
             imgHTML += `<img src="${imgSrc}" class="gallery-img ${activeClass} ${containClass} ${logoClass}" alt="${project.title}" onerror="this.src='https://placehold.co/600x400/F5F5F5/999?text=Upload+File';">`;
           });
 
